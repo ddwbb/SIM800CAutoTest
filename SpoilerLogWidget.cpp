@@ -79,5 +79,5 @@ void SpoilerLogWidget::log(const QString &log)
 
 void SpoilerLogWidget::notify()
 {
-    emit collapsed(m_textEdit.height() == m_contentMaxHeight);
+    emit compressed(m_textEdit.height() == m_contentMaxHeight);
 }

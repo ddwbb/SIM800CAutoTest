@@ -12,19 +12,19 @@ const static QColor errColorEnd(192, 0, 0);
 const static QPointF gradientPoint(-500, -500);
 
 LedIndicator::LedIndicator(QWidget *parent)
-    : QWidget(parent), state(LedState::Off)
+    : QWidget(parent), m_state(LedState::kOff)
 {
 }
 
 void LedIndicator::toggle(bool state)
 {
-    LedState newState = state ? LedState::On : LedState::Error;
+    LedState newState = state ? LedState::kOn : LedState::kError;
     setState(newState);
 }
 
 void LedIndicator::setState(LedState state)
 {
-    this->state = state;
+    m_state = state;
     update();
 }
 
@@ -59,18 +59,18 @@ void LedIndicator::paintEvent(QPaintEvent *event) {
     painter.drawEllipse(QPointF(0,0), 300, 300);
 
     painter.setPen(pen);
-    switch (state) {
-        case LedState::On:
+    switch (m_state) {
+        case LedState::kOn:
             gradient = QRadialGradient (QPointF(-200,-200), 1500, QPointF(-200,-200));
             gradient.setColorAt(0, onColorStart);
             gradient.setColorAt(1, onColorEnd);
         break;
-        case LedState::Off:
+        case LedState::kOff:
             gradient = QRadialGradient (QPointF(200,200), 1500, QPointF(200,200));
             gradient.setColorAt(0, offColorStart);
             gradient.setColorAt(1, offColorEnd);
         break;
-        case LedState::Error:
+        case LedState::kError:
             gradient = QRadialGradient (QPointF(200,200), 1500, QPointF(200,200));
             gradient.setColorAt(0, errColorStart);
             gradient.setColorAt(1, errColorEnd);

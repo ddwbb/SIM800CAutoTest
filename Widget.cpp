@@ -8,7 +8,7 @@ Widget::Widget(QWidget *parent)
     ui->setupUi(this);
 
     // dirty fix for collapse widget
-    m_prevSize = size();
+    m_defaultState = size();
 
     connect(ui->serialPortWidget, &SerialPortWidget::opened, &m_controller, &CommandController::open);
     connect(ui->serialPortWidget, &SerialPortWidget::closed, &m_controller, &CommandController::close);
@@ -28,7 +28,7 @@ Widget::Widget(QWidget *parent)
 
     connect(&m_controller, &CommandController::signalQualityCalculated, ui->SiganlPowerIndicator, &SignalPowerWidget::setSignalQualityRSSI);
 
-    connect(ui->logWidget, &SpoilerLogWidget::collapsed, this, &Widget::collapse);
+    connect(ui->logWidget, &SpoilerLogWidget::compressed, this, &Widget::compress);
 
     connect(&m_controller, &CommandController::log, ui->logWidget, &SpoilerLogWidget::log);
 
@@ -45,8 +45,8 @@ Widget::~Widget()
 
 void Widget::reset()
 {
-    ui->simAvailableLed->setState(LedState::Off);
-    ui->networkAvalableLed->setState(LedState::Off);
+    ui->simAvailableLed->setState(LedState::kOff);
+    ui->networkAvalableLed->setState(LedState::kOff);
     ui->SiganlPowerIndicator->setSignalQualityRSSI(0);
     m_controller.reset();
 }
@@ -68,11 +68,10 @@ void Widget::requestPin(bool requested)
     }
 }
 
-void Widget::collapse(bool collapsed)
+void Widget::compress(bool compressed)
 {
-    if (!collapsed) {
-        resize(m_prevSize);
-    }
+    if (!compressed)
+        resize(m_defaultState);
 }
 
 

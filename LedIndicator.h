@@ -39,7 +39,7 @@ protected:
 
 private:
     // scale ratio
-    static const qreal m_scaledSize;
+    static const qreal scaledSize;
     // current led state
     LedState m_state;
 
