@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
 
     bool initStatus = init();
 
-    if (initStatus == FT_OK) {
+    if (initStatus != FT_OK) {
         QMessageBox(QMessageBox::Critical, "Ошибка",
             "Невозможно инициализировать ft230x и выставить питание на пины модема CBUS0, CBUS1").exec();
         return EXIT_SUCCESS;
