@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Widget</class>
+ <widget class="QWidget" name="Widget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>296</width>
+    <height>229</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Widget</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout_2" rowstretch="1,3,1" rowminimumheight="1,150,1">
+   <item row="1" column="0">
+    <widget class="QGroupBox" name="groupBox">
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>150</height>
+      </size>
+     </property>
+     <property name="title">
+      <string>Параметры</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="2" column="1">
+       <widget class="SignalPowerWidget" name="SiganlPowerIndicator" native="true"/>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Наличие SIM-карты:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="LedIndicator" name="networkAvalableLed" native="true"/>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_3">
+        <property name="text">
+         <string>Мощность:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="LedIndicator" name="simAvailableLed" native="true"/>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>Регистрация в сети:</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="0" column="0">
+    <widget class="SerialPortWidget" name="serialPortWidget" native="true">
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>40</height>
+      </size>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <widget class="SpoilerLogWidget" name="logWidget" native="true"/>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>SerialPortWidget</class>
+   <extends>QWidget</extends>
+   <header>SerialPortWidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>LedIndicator</class>
+   <extends>QWidget</extends>
+   <header>LedIndicator.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>SignalPowerWidget</class>
+   <extends>QWidget</extends>
+   <header>SignalPowerWidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>SpoilerLogWidget</class>
+   <extends>QWidget</extends>
+   <header>SpoilerLogWidget.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>
